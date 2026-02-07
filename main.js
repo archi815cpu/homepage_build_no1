@@ -17,3 +17,32 @@ document.getElementById('generate-btn').addEventListener('click', () => {
         lottoNumbersContainer.appendChild(numberElement);
     });
 });
+
+// Theme toggle logic
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark-mode') {
+        body.classList.add('dark-mode');
+        themeToggleBtn.textContent = '☀️';
+    } else {
+        // Default to light mode (no class needed, as :root defines light mode)
+        themeToggleBtn.textContent = '🌙';
+        localStorage.setItem('theme', 'light-mode'); // Ensure light-mode is saved if no theme was found
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light-mode');
+            themeToggleBtn.textContent = '🌙';
+        } else {
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark-mode');
+            themeToggleBtn.textContent = '☀️';
+        }
+    });
+});
