@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             console.log('Affiliate Inquiry Data:', formData);
 
-            fetch('https://formspree.io/f/xbdajkkz', {
+            fetch('https://formspree.io/f/xbdaogwk', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
