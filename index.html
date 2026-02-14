@@ -14,6 +14,29 @@
         <div id="lotto-numbers" class="lotto-numbers"></div>
         <button id="generate-btn">번호 생성</button>
     </div>
+
+    <div class="affiliate-container">
+        <h2>제휴 문의 (Affiliate Inquiry)</h2>
+        <form id="affiliate-form">
+            <div class="form-group">
+                <label for="name">이름 (Name):</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">이메일 (Email):</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="company">회사명 (Company Name):</label>
+                <input type="text" id="company" name="company">
+            </div>
+            <div class="form-group">
+                <label for="message">문의 내용 (Message):</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">문의 제출 (Submit Inquiry)</button>
+        </form>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

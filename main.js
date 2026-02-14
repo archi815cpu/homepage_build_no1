@@ -45,4 +45,50 @@ document.addEventListener('DOMContentLoaded', () => {
             themeToggleBtn.textContent = '☀️';
         }
     });
+
+    // Affiliate Form Submission Logic
+    const affiliateForm = document.getElementById('affiliate-form');
+    if (affiliateForm) {
+        affiliateForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const message = document.getElementById('message').value;
+
+            const formData = {
+                name,
+                email,
+                company,
+                message
+            };
+
+            console.log('Affiliate Inquiry Data:', formData);
+
+            fetch('https://formspree.io/f/xbdajkkz', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json' // Important for Formspree to return JSON
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                return response.json().then(errorData => Promise.reject(errorData));
+            })
+            .then(data => {
+                console.log('Success:', data);
+                alert('문의가 성공적으로 제출되었습니다. (Inquiry submitted successfully!)');
+                affiliateForm.reset(); // Clear the form
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('문의 제출 중 오류가 발생했습니다. (Error submitting inquiry.)');
+            });
+        });
+    }
 });
